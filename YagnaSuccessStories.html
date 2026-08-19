@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yagna Software Solutions — Success Stories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── Floating Header ── */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1280px;
+            background: linear-gradient(145deg, #eef6ff 0%, #dce8f8 100%);
+            border-radius: 6px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(59, 130, 246, 0.06);
+            padding: 10px 24px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 20px;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-desktop>a,
+        .nav-desktop .services-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            transition: color 0.2s;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            padding: 6px 0;
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-block;
+            line-height: normal;
+            text-decoration: none;
+        }
+
+        .nav-desktop>a:hover,
+        .nav-desktop .services-link:hover {
+            color: #2563eb;
+        }
+
+        .nav-desktop .nav-cta {
+            background: #1e293b;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff !important;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-desktop .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            color: #ffffff !important;
+            background: #0f172a;
+        }
+
+        /* ── Active underline for Success Stories ── */
+        .nav-desktop .active-underline {
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: #2563eb;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ── SERVICES DROPDOWN ── */
+        .services-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mega-dropdown {
+            position: absolute;
+            top: calc(100% + 18px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: linear-gradient(145deg, #eef6ff 0%, #dce8f8 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.20), 0 0 0 1px rgba(59, 130, 246, 0.06);
+            min-width: 700px;
+            max-width: 860px;
+            width: max-content;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            display: flex;
+            gap: 10px;
+            z-index: 1100;
+            transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .services-dropdown-wrapper:hover .mega-dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+            transition-delay: 0s;
+        }
+
+        .db-sidebar {
+            flex: 0 0 190px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+        .db-sidebar-item {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            line-height: 1.4;
+        }
+
+        .db-sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+            color: #0f172a;
+        }
+
+        .db-sidebar-item.active {
+            background: #ffffff;
+            color: #2563eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .db-sidebar-item .item-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .db-selected-card {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 16px 20px 18px 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            min-width: 0;
+        }
+
+        .db-selected-card .selected-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .db-selected-card .selected-title .title-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .db-selected-card .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 16px;
+        }
+
+        .db-selected-card .service-item {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1e293b;
+            padding: 4px 0 4px 4px;
+            border-radius: 4px;
+            transition: all 0.12s ease;
+            cursor: default;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1.4;
+        }
+
+        .db-selected-card .service-item::before {
+            content: "›";
+            font-size: 16px;
+            font-weight: 300;
+            color: #94a3b8;
+            transition: color 0.2s, transform 0.2s;
+            margin-right: 2px;
+            flex-shrink: 0;
+        }
+
+        .db-selected-card .service-item:hover {
+            color: #2563eb;
+        }
+
+        .db-selected-card .service-item:hover::before {
+            color: #3b82f6;
+            transform: translateX(2px);
+        }
+
+        /* ── Page Hero ── */
+        .page-hero {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 48px 0 60px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .page-hero h1 .highlight {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 18px;
+            color: #475569;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── Success Stories Grid ── */
+        .stories-section {
+            padding: 60px 0;
+            background: #f8fafc;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .story-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 32px 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.10);
+        }
+
+        .story-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .story-client-logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .story-client-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-client-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+        }
+
+        .story-client-industry {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .story-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 4px 12px;
+            border-radius: 100px;
+            border: 1px solid rgba(59, 130, 246, 0.10);
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .story-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .story-challenge {
+            margin-bottom: 12px;
+        }
+
+        .story-challenge strong,
+        .story-solution strong,
+        .story-result strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .story-challenge p,
+        .story-solution p,
+        .story-result p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #475569;
+            margin-top: 2px;
+        }
+
+        .story-solution {
+            margin-bottom: 12px;
+        }
+
+        .story-result {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 14px;
+            margin-top: 6px;
+        }
+
+        .story-result .result-highlight {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 20px;
+            color: #3b82f6;
+            margin-right: 6px;
+        }
+
+        .story-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .story-tech-stack span {
+            font-size: 11px;
+            font-weight: 500;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 100px;
+            transition: background 0.2s;
+        }
+
+        .story-tech-stack span:hover {
+            background: #e2e8f0;
+        }
+
+        /* ── Footer ── */
+        .footer-section {
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-address h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-address p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .footer-map {
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .footer-map iframe {
+            display: block;
+            width: 360px;
+            height: 220px;
+            filter: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .stories-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            body {
+                padding-top: 80px;
+            }
+
+            .header {
+                padding: 10px 16px;
+                top: 16px;
+                width: calc(100% - 32px);
+            }
+
+            .page-hero {
+                padding: 32px 0 40px;
+            }
+            .page-hero h1 {
+                font-size: 32px;
+                letter-spacing: -0.5px;
+            }
+            .page-hero p {
+                font-size: 16px;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .story-card {
+                padding: 24px 20px;
+            }
+
+            .story-tag {
+                margin-left: 0;
+                margin-top: 4px;
+                width: fit-content;
+            }
+
+            .story-meta {
+                flex-wrap: wrap;
+            }
+
+            .nav-desktop {
+                gap: 10px;
+            }
+            .nav-desktop>a,
+            .nav-desktop .services-link {
+                font-size: 12px;
+            }
+            .nav-desktop .nav-cta {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .logo img {
+                height: 32px;
+            }
+            .logo span {
+                font-size: 16px;
+            }
+
+            .mega-dropdown {
+                position: fixed;
+                top: 70px;
+                left: 12px;
+                right: 12px;
+                transform: none !important;
+                min-width: unset;
+                max-width: unset;
+                width: auto;
+                flex-direction: column;
+                border-radius: 12px;
+                padding: 12px;
+                max-height: 75vh;
+                overflow-y: auto;
+                transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .services-dropdown-wrapper:hover .mega-dropdown {
+                transform: none !important;
+            }
+
+            .db-sidebar {
+                flex: none;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                background: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                padding: 6px;
+                gap: 4px;
+                border-radius: 8px;
+                margin-bottom: 4px;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .db-sidebar::-webkit-scrollbar {
+                height: 3px;
+            }
+            .db-sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .db-sidebar::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 4px;
+            }
+
+            .db-sidebar-item {
+                flex-shrink: 0;
+                font-size: 12px;
+                padding: 6px 14px;
+                white-space: nowrap;
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 20px;
+            }
+
+            .db-sidebar-item.active {
+                background: #ffffff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            }
+
+            .db-sidebar-item .item-icon {
+                width: 18px;
+                height: 18px;
+                font-size: 7px;
+            }
+
+            .db-selected-card {
+                padding: 12px 14px 14px 14px;
+            }
+
+            .db-selected-card .selected-title {
+                font-size: 13px;
+                padding-bottom: 8px;
+                margin-bottom: 8px;
+            }
+
+            .db-selected-card .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2px 12px;
+            }
+
+            .db-selected-card .service-item {
+                font-size: 12px;
+                padding: 3px 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-address p {
+                font-size: 14px;
+            }
+            .footer-map,
+            .footer-map iframe {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 28px;
+            }
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .story-card {
+                padding: 20px 16px;
+            }
+            .story-title {
+                font-size: 18px;
+            }
+            .story-client-name {
+                font-size: 16px;
+            }
+
+            .nav-desktop {
+                gap: 6px;
+            }
+            .nav-desktop>a,
+            .nav-desktop .services-link {
+                font-size: 11px;
+            }
+            .nav-desktop .nav-cta {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            .logo img {
+                height: 28px;
+            }
+            .logo span {
+                font-size: 14px;
+            }
+
+            .mega-dropdown {
+                top: 60px;
+                left: 8px;
+                right: 8px;
+                padding: 10px;
+            }
+
+            .db-sidebar-item {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
+
+            .db-selected-card {
+                padding: 10px 10px 12px 10px;
+            }
+
+            .db-selected-card .selected-title {
+                font-size: 12px;
+            }
+
+            .db-selected-card .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2px 8px;
+            }
+
+            .db-selected-card .service-item {
+                font-size: 11px;
+                padding: 2px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ FLOATING HEADER ═══ -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo links to index.html -->
+            <a href="index.html" class="logo">
+                <span>Yagna Software</span>
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="YagnaAboutUs.html">About Us</a>
+
+                <!-- SERVICES DROPDOWN -->
+                <div class="services-dropdown-wrapper" id="servicesDropdownWrapper">
+                    <button class="services-link" type="button">Services ▼</button>
+
+                    <div class="mega-dropdown" id="megaDropdown">
+                        <!-- Sidebar: Database List -->
+                        <div class="db-sidebar" id="dbSidebar">
+                            <!-- Rendered by JS -->
+                        </div>
+
+                        <!-- White Card: Selected Database -->
+                        <div class="db-selected-card" id="dbSelectedCard">
+                            <div class="selected-title" id="selectedTitle">
+                                <span class="title-icon" id="titleIcon" style="background:#3b82f6;">DB</span>
+                                <span id="selectedDbName">Oracle Database</span>
+                            </div>
+                            <div class="service-grid" id="serviceGrid">
+                                <!-- dynamically rendered -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Stories — active underline -->
+                <a href="YagnaSuccessStories.html" class="active-underline">Success Stories</a>
+
+                <!-- Customer Reviews → index.html#reviews -->
+                <a href="index.html#reviews">Customer Reviews</a>
+
+                <!-- Contact Us → index.html#contact (bottom of homepage) -->
+                <a href="index.html#contact">Contact Us</a>
+
+                <a href="YagnaCareer.html">Career</a>
+                <a href="YagnaGetInTouch.html" class="nav-cta">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our <span class="highlight">Success Stories</span></h1>
+            <p>Real-world transformations — from legacy systems to modern, high-performance data platforms. See how we've helped businesses like yours achieve breakthrough results.</p>
+        </div>
+    </section>
+
+    <!-- ═══ SUCCESS STORIES GRID ═══ -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="stories-grid">
+
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#1a73e8,#0d47a1);">FC</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">FinCorp</span>
+                            <span class="story-client-industry">Financial Services</span>
+                        </div>
+                        <span class="story-tag">🏦 Banking</span>
+                    </div>
+                    <h3 class="story-title">Legacy Oracle to AWS RDS — Zero Downtime Migration</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>FinCorp's on-premise Oracle 11g database was struggling with peak-hour performance, high maintenance costs, and limited scalability. A critical merger demanded a modern, cloud-native foundation.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>Yagna Software executed a phased migration to AWS RDS for Oracle using Oracle GoldenGate for real‑time replication, ensuring zero downtime. We optimized schemas, re‑architected indexes, and automated failover.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">55%</span> lower TCO · <span class="result-highlight">99.99%</span> availability · query speed improved by <span class="result-highlight">4.2x</span></p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>Oracle</span>
+                        <span>AWS RDS</span>
+                        <span>GoldenGate</span>
+                        <span>Python</span>
+                        <span>Terraform</span>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#e53935,#b71c1c);">HL</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">HealthLink</span>
+                            <span class="story-client-industry">Healthcare</span>
+                        </div>
+                        <span class="story-tag">🏥 HIPAA</span>
+                    </div>
+                    <h3 class="story-title">HIPAA‑Compliant MongoDB Atlas for Patient Records</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>HealthLink's legacy MSSQL database couldn't handle the velocity of IoT data from wearable devices. Strict HIPAA compliance and real‑time analytics were non‑negotiable.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>We designed a secure MongoDB Atlas cluster with field‑level encryption, VPC peering, and automated backup. Built a change‑data‑capture pipeline to stream patient vitals into a real‑time dashboard.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">100%</span> HIPAA compliance · <span class="result-highlight">300%</span> faster writes · <span class="result-highlight">99.999%</span> durability</p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>MongoDB Atlas</span>
+                        <span>AWS</span>
+                        <span>Kafka</span>
+                        <span>Node.js</span>
+                        <span>Encryption</span>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#43a047,#1b5e20);">RT</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">RetailTech</span>
+                            <span class="story-client-industry">E‑Commerce</span>
+                        </div>
+                        <span class="story-tag">🛒 Retail</span>
+                    </div>
+                    <h3 class="story-title">Real‑Time Inventory with TiDB &amp; HTAP</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>RetailTech's MySQL sharding broke during flash sales. They needed a distributed database that could handle millions of concurrent reads/writes while running real‑time analytics on the same data.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>We migrated to TiDB, a distributed HTAP database, with TiFlash for real‑time analytics. Implemented auto‑scaling, cross‑AZ replication, and a custom caching layer with Redis.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">0</span> downtime during peak sales · <span class="result-highlight">68%</span> faster inventory sync · <span class="result-highlight">40%</span> cost savings</p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>TiDB</span>
+                        <span>TiFlash</span>
+                        <span>Redis</span>
+                        <span>Go</span>
+                        <span>Kubernetes</span>
+                    </div>
+                </div>
+
+                <!-- Story 4 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#f57c00,#e65100);">EN</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">EnergyNova</span>
+                            <span class="story-client-industry">Energy &amp; Utilities</span>
+                        </div>
+                        <span class="story-tag">⚡ IoT</span>
+                    </div>
+                    <h3 class="story-title">Cassandra for Smart‑Grid Sensor Data</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>EnergyNova's PostgreSQL instance was overwhelmed by 50,000+ sensor writes per second from smart meters. Data retention and query latency were spiraling out of control.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>We deployed a 12‑node Cassandra cluster with a custom data model optimized for time‑series queries. Built a data pipeline using Kafka and Spark for real‑time anomaly detection.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">1.2M</span> writes/sec sustained · <span class="result-highlight">80%</span> lower latency · <span class="result-highlight">5-year</span> data retention</p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>Cassandra</span>
+                        <span>Kafka</span>
+                        <span>Spark</span>
+                        <span>Java</span>
+                        <span>Prometheus</span>
+                    </div>
+                </div>
+
+                <!-- Story 5 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#d32f2f,#880e4f);">GL</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">GlobalLogistics</span>
+                            <span class="story-client-industry">Supply Chain</span>
+                        </div>
+                        <span class="story-tag">🚚 Logistics</span>
+                    </div>
+                    <h3 class="story-title">Oracle Exadata Modernization &amp; GoldenGate Replication</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>GlobalLogistics ran a critical Oracle Exadata X5 system with growing storage bottlenecks and high licensing costs. They needed a hybrid cloud strategy to extend capacity without sacrificing performance.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>Yagna Software implemented Oracle GoldenGate bidirectional replication between on‑prem Exadata and AWS RDS. Upgraded to Exadata X9M with HCC compression, cutting storage footprint by 60%.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">60%</span> storage reduction · <span class="result-highlight">3x</span> faster queries · <span class="result-highlight">$2.1M</span> annual savings</p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>Exadata X9M</span>
+                        <span>GoldenGate</span>
+                        <span>AWS RDS</span>
+                        <span>HCC</span>
+                        <span>RMAN</span>
+                    </div>
+                </div>
+
+                <!-- Story 6 -->
+                <div class="story-card">
+                    <div class="story-meta">
+                        <div class="story-client-logo" style="background:linear-gradient(135deg,#0288d1,#01579b);">AI</div>
+                        <div class="story-client-info">
+                            <span class="story-client-name">AnalytixInsight</span>
+                            <span class="story-client-industry">Analytics &amp; AI</span>
+                        </div>
+                        <span class="story-tag">📊 Big Data</span>
+                    </div>
+                    <h3 class="story-title">ClickHouse &amp; Snowflake for Petabyte‑Scale Analytics</h3>
+                    <div class="story-challenge">
+                        <strong>Challenge</strong>
+                        <p>AnalytixInsight's data lake on S3 was too slow for interactive dashboards. Their legacy Redshift cluster couldn't scale cost‑effectively for ad‑hoc queries from 200+ data scientists.</p>
+                    </div>
+                    <div class="story-solution">
+                        <strong>Solution</strong>
+                        <p>We architected a tiered analytics platform: ClickHouse for real‑time ingestion and fast aggregations, Snowflake for ad‑hoc SQL and data sharing, with dbt for transformation pipelines.</p>
+                    </div>
+                    <div class="story-result">
+                        <strong>Result</strong>
+                        <p><span class="result-highlight">100x</span> faster dashboards · <span class="result-highlight">70%</span> lower query cost · <span class="result-highlight">10TB</span> processed daily</p>
+                    </div>
+                    <div class="story-tech-stack">
+                        <span>ClickHouse</span>
+                        <span>Snowflake</span>
+                        <span>dbt</span>
+                        <span>Airflow</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-address">
+                    <h3>Our Office</h3>
+                    <p>
+                        4-2-220/4, No 401, Sri Sai Ganesh Towers,<br />
+                        Khammam - 507001, Telangana, India
+                    </p>
+                </div>
+                <div class="footer-map">
+                    <iframe
+                    src="https://www.google.com/maps?q=4-2-220%2F4%2C+No+401%2C+Sri+Sai+Ganesh+Towers%2C+Khammam+-+507001%2C+Telangana%2C+India&output=embed"
+                    width="360"
+                    height="220"
+                    style="border:0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Yagna Software Solutions office location">
+                </iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Yagna Software Solutions. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT (same as main page) ═══ -->
+<script>
+    (function() {
+        console.log('🚀 Yagna Software — Success Stories page loaded');
+
+        const servicesData = {
+            oracledb: {
+                label: 'Oracle Database',
+                icon: 'OR',
+                iconBg: '#F80000',
+                services: [
+                    'Cloud Infrastructure planning (Oracle, AWS, Azure)',
+                    'Cloud migrations with minimal downtime',
+                    'Oracle Database, RAC & ASM Administration',
+                    'Oracle Exadata Implementation, Migration & Maintenance',
+                    'Exadata Smart Scan, HCC, Flash Cache expertise',
+                    'Exadata software/firmware maintenance (upgrades, patching)',
+                    'Exadata performance tuning',
+                    'Exadata Disaster Recovery strategies',
+                    'Oracle GoldenGate implementation & support',
+                    'Security auditing & patching vulnerabilities',
+                    'Proactive Performance Monitoring & Tuning',
+                    'Database upgrades (9i → 10g → 11g → 12c → 19c)',
+                    'Backup & recovery using RMAN & Storage Technologies',
+                    'RAC, ASM, DataGuard administration',
+                    '24/7 on‑call support for multiple databases'
+                ]
+            },
+            oracleebs: {
+                label: 'Oracle eBusiness Suite',
+                icon: 'EB',
+                iconBg: '#F80000',
+                services: [
+                    'Oracle Apps 11i, R12.1, R12.2 implementation & upgrades',
+                    'Applications upgrades (11i → R12.1 → R12.2)',
+                    'Patching & Cloning Oracle Apps (single/multi‑node)',
+                    'Shared appltop, distributed appltop administration',
+                    'Support & maintenance of applications & databases',
+                    'Monitoring Apache, Concurrent Manager, Forms, DB issues',
+                    'Automating routine monitoring & maintenance',
+                    'Weblogic, Demantra, OBIEE implementation & support',
+                    'SOA Applications implementation & support',
+                    'Identity Management, Single Sign‑On implementation',
+                    'Datacenter, hardware, OS platform migrations'
+                ]
+            },
+            mysql: {
+                label: 'MySQL',
+                icon: 'MY',
+                iconBg: '#00758F',
+                services: [
+                    'Cloud Migration (AWS RDS/Aurora, GCP, Azure)',
+                    'High Availability (InnoDB Cluster, Replication)',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Compliance (GDPR, HIPAA)',
+                    'Backup & Disaster Recovery Planning',
+                    'Managed Database Services (24/7)',
+                    'ProxysQL Consulting & Support',
+                    'Migration from Legacy Databases',
+                    'DevOps Automation for MySQL',
+                    'MySQL Enterprise Audit & Firewall'
+                ]
+            },
+            mariadb: {
+                label: 'MariaDB',
+                icon: 'MA',
+                iconBg: '#003545',
+                services: [
+                    'Cloud Migration (AWS RDS, GCP, Azure)',
+                    'MaxScale Implementation & Support',
+                    'Galera Cluster Configuration & Management',
+                    'Performance Tuning & Query Optimization',
+                    'Backup & Disaster Recovery',
+                    'Migration from MySQL to MariaDB',
+                    'ColumnStore / Analytics Consulting',
+                    'Managed Database Services',
+                    'Security & Compliance Auditing',
+                    'High Availability & Load Balancing'
+                ]
+            },
+            mongodb: {
+                label: 'MongoDB',
+                icon: 'MO',
+                iconBg: '#47A248',
+                services: [
+                    'MongoDB Atlas Setup & Management',
+                    'Sharding & Replication Strategy',
+                    'Aggregation Pipeline Optimization',
+                    'Performance Tuning & Indexing',
+                    'Ops Manager / Cloud Manager Implementation',
+                    'Backup & Disaster Recovery',
+                    'Migration from RDBMS to MongoDB',
+                    'Security Auditing & Encryption',
+                    'Managed Database Services (24/7)',
+                    'Data Modeling Consulting'
+                ]
+            },
+            postgresql: {
+                label: 'PostgreSQL',
+                icon: 'PG',
+                iconBg: '#336791',
+                services: [
+                    'Cloud Migration (AWS RDS, GCP, Azure)',
+                    'High Availability (Patroni, Repmgr)',
+                    'Logical & Physical Replication Setup',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Compliance',
+                    'Backup & Disaster Recovery (Barman)',
+                    'Migration from Oracle & MSSQL',
+                    'PostGIS & Extension Management',
+                    'Managed Database Services',
+                    'DevOps Automation for PostgreSQL'
+                ]
+            },
+            tidb: {
+                label: 'TiDB',
+                icon: 'TI',
+                iconBg: '#2A6C9E',
+                services: [
+                    'HTAP (Hybrid Transactional/Analytical Processing) Consulting',
+                    'Horizontal Scaling Strategy',
+                    'Cloud-Native Deployment (AWS, GCP, Azure)',
+                    'Performance Tuning & Query Optimization',
+                    'Migration from MySQL to TiDB',
+                    'Backup & Disaster Recovery',
+                    'Disaster Recovery & High Availability',
+                    'Managed Database Services',
+                    'Security & Compliance',
+                    'Real-time Analytics Enablement'
+                ]
+            },
+            mssql: {
+                label: 'MSSQL',
+                icon: 'MS',
+                iconBg: '#CC2927',
+                services: [
+                    'Cloud Migration (Azure SQL, AWS RDS)',
+                    'Always On Availability Groups',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Encryption',
+                    'Backup & Disaster Recovery',
+                    'SQL Server Integration Services (SSIS)',
+                    'Migration from Oracle/MySQL to MSSQL',
+                    'Managed Database Services (24/7)',
+                    'High Availability & Disaster Recovery',
+                    'License Optimization & Cost Management'
+                ]
+            },
+            cassandra: {
+                label: 'Cassandra',
+                icon: 'CA',
+                iconBg: '#1287B1',
+                services: [
+                    'Cluster Design & Capacity Planning',
+                    'Performance Tuning & Query Optimization',
+                    'Replication Strategy Configuration',
+                    'Backup & Disaster Recovery',
+                    'Migration from RDBMS to Cassandra',
+                    'OpsCenter Management & Monitoring',
+                    'Data Modeling for Distributed Systems',
+                    'Security & Compliance',
+                    'Managed Database Services',
+                    'Real-time Analytics & IoT Solutions'
+                ]
+            }
+        };
+
+        const sidebar = document.getElementById('dbSidebar');
+        const selectedDbName = document.getElementById('selectedDbName');
+        const titleIcon = document.getElementById('titleIcon');
+        const serviceGrid = document.getElementById('serviceGrid');
+        const wrapper = document.getElementById('servicesDropdownWrapper');
+        const dropdown = document.getElementById('megaDropdown');
+
+        let currentDb = 'oracledb';
+        let hideTimer = null;
+        let isOpen = false;
+
+        function renderSidebar() {
+            let html = '';
+            const dbKeys = Object.keys(servicesData);
+            dbKeys.forEach(key => {
+                const data = servicesData[key];
+                const activeClass = key === currentDb ? 'active' : '';
+                html += `
+                            <button class="db-sidebar-item ${activeClass}" data-db="${key}">
+                                <span class="item-icon" style="background:${data.iconBg};">${data.icon}</span>
+                                ${data.label}
+                            </button>
+                        `;
+            });
+            sidebar.innerHTML = html;
+
+            sidebar.querySelectorAll('.db-sidebar-item').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const db = this.dataset.db;
+                    if (db && servicesData[db] && db !== currentDb) {
+                        renderServices(db);
+                    }
+                });
+            });
+        }
+
+        function renderServices(dbKey) {
+            const data = servicesData[dbKey];
+            if (!data) return;
+            currentDb = dbKey;
+
+            sidebar.querySelectorAll('.db-sidebar-item').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.db === dbKey);
+            });
+
+            selectedDbName.textContent = data.label;
+            titleIcon.textContent = data.icon;
+            titleIcon.style.background = data.iconBg;
+
+            let html = '';
+            data.services.forEach(svc => {
+                html += `<div class="service-item">${svc}</div>`;
+            });
+            serviceGrid.innerHTML = html;
+        }
+
+        function showDropdown() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.pointerEvents = 'auto';
+            dropdown.style.transform = 'translateX(-50%) translateY(0)';
+            isOpen = true;
+        }
+
+        function hideDropdown() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            hideTimer = setTimeout(() => {
+                dropdown.style.opacity = '0';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.pointerEvents = 'none';
+                dropdown.style.transform = 'translateX(-50%) translateY(8px)';
+                isOpen = false;
+                hideTimer = null;
+            }, 350);
+        }
+
+        wrapper.addEventListener('mouseenter', showDropdown);
+        wrapper.addEventListener('mouseleave', hideDropdown);
+        dropdown.addEventListener('mouseenter', function() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            if (!isOpen) showDropdown();
+        });
+
+        const servicesLink = wrapper.querySelector('.services-link');
+        if (servicesLink) {
+            servicesLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const isCurrentlyOpen = dropdown.style.opacity === '1';
+                    if (isCurrentlyOpen) {
+                        hideDropdown();
+                    } else {
+                        showDropdown();
+                    }
+                }
+            });
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    if (!isOpen) {
+                        dropdown.style.opacity = '';
+                        dropdown.style.visibility = '';
+                        dropdown.style.pointerEvents = '';
+                        dropdown.style.transform = '';
+                    }
+                }
+            }, 200);
+        });
+
+        renderSidebar();
+        renderServices('oracledb');
+    })();
+</script>
+</body>
+</html>

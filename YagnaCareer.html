@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers — Yagna Software Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── Floating Header ── */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1280px;
+            background: linear-gradient(145deg, #eef6ff 0%, #dce8f8 100%);
+            border-radius: 6px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(59, 130, 246, 0.06);
+            padding: 10px 24px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 20px;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+        }
+
+        .logo:hover span {
+            color: #2563eb;
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-desktop>a,
+        .nav-desktop .services-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e293b;
+            transition: color 0.2s;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            padding: 6px 0;
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-block;
+            line-height: normal;
+            text-decoration: none;
+        }
+
+        .nav-desktop>a:hover,
+        .nav-desktop .services-link:hover {
+            color: #2563eb;
+        }
+
+        .nav-desktop .career-link {
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 4px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .nav-desktop .nav-cta {
+            background: #1e293b;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff !important;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-desktop .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+            color: #ffffff !important;
+            background: #0f172a;
+        }
+
+        /* ── SERVICES DROPDOWN (MEGA MENU) ── */
+        .services-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .mega-dropdown {
+            position: absolute;
+            top: calc(100% + 18px);
+            left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: linear-gradient(145deg, #eef6ff 0%, #dce8f8 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            box-shadow: 0 20px 60px -12px rgba(0, 0, 0, 0.20), 0 0 0 1px rgba(59, 130, 246, 0.06);
+            min-width: 700px;
+            max-width: 860px;
+            width: max-content;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            display: flex;
+            gap: 10px;
+            z-index: 1100;
+            transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .services-dropdown-wrapper:hover .mega-dropdown {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+            transition-delay: 0s;
+        }
+
+        /* ── Sidebar ── */
+        .db-sidebar {
+            flex: 0 0 190px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+        .db-sidebar-item {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1e293b;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            line-height: 1.4;
+        }
+
+        .db-sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+            color: #0f172a;
+        }
+
+        .db-sidebar-item.active {
+            background: #ffffff;
+            color: #2563eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .db-sidebar-item .item-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        /* ── White Card ── */
+        .db-selected-card {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 16px 20px 18px 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            min-width: 0;
+        }
+
+        .db-selected-card .selected-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .db-selected-card .selected-title .title-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .db-selected-card .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 16px;
+        }
+
+        .db-selected-card .service-item {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1e293b;
+            padding: 4px 0 4px 4px;
+            border-radius: 4px;
+            transition: all 0.12s ease;
+            cursor: default;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1.4;
+        }
+
+        .db-selected-card .service-item::before {
+            content: "›";
+            font-size: 16px;
+            font-weight: 300;
+            color: #94a3b8;
+            transition: color 0.2s, transform 0.2s;
+            margin-right: 2px;
+            flex-shrink: 0;
+        }
+
+        .db-selected-card .service-item:hover {
+            color: #2563eb;
+        }
+
+        .db-selected-card .service-item:hover::before {
+            color: #3b82f6;
+            transform: translateX(2px);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: calc(100vh - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 0 60px;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            max-width: 820px;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 6px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(59, 130, 246, 0.12);
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            color: #0f172a;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #475569;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px 24px;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background: #1e293b;
+            padding: 14px 36px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+            background: #0f172a;
+        }
+
+        .btn-outline {
+            background: transparent;
+            padding: 14px 36px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #1e293b;
+            border: 1.5px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.12);
+        }
+
+        /* ── Why Join Us ── */
+        .why-section {
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 60px 0;
+        }
+
+        .section-headline {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.06);
+        }
+
+        .benefit-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px auto;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.08);
+            color: #3b82f6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .benefit-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .benefit-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .benefit-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ── Open Positions ── */
+        .jobs-section {
+            background: #f8fafc;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 60px 0;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .job-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.08);
+        }
+
+        .job-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 4px 12px;
+            border-radius: 100px;
+            width: fit-content;
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 14px;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .job-meta svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .job-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        /* ── Application Process ── */
+        .process-section {
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 60px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            counter-reset: step;
+        }
+
+        .process-step {
+            text-align: center;
+            counter-increment: step;
+            position: relative;
+        }
+
+        .process-step::before {
+            content: counter(step);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 14px auto;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover::before {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .process-step h4 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+
+        /* ── Contact / CTA ── */
+        .cta-section {
+            background: #f8fafc;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: #475569;
+            max-width: 560px;
+            margin: 0 auto 28px auto;
+            line-height: 1.7;
+        }
+
+        /* ── Footer ── */
+        .footer-section {
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-address h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-address p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .footer-map {
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .footer-map iframe {
+            display: block;
+            width: 360px;
+            height: 220px;
+            filter: none;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            body {
+                padding-top: 80px;
+            }
+
+            .header {
+                padding: 10px 16px;
+                top: 16px;
+                width: calc(100% - 32px);
+            }
+            .hero {
+                min-height: calc(100vh - 80px);
+                padding: 20px 0 40px;
+            }
+            .hero h1 {
+                font-size: 32px;
+                letter-spacing: -0.5px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .btn-primary,
+            .btn-outline {
+                padding: 12px 28px;
+                font-size: 15px;
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions a {
+                width: 100%;
+            }
+
+            .nav-desktop {
+                gap: 10px;
+            }
+            .nav-desktop>a,
+            .nav-desktop .services-link {
+                font-size: 12px;
+            }
+            .nav-desktop .nav-cta {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .logo img {
+                height: 32px;
+            }
+            .logo span {
+                font-size: 16px;
+            }
+
+            .mega-dropdown {
+                position: fixed;
+                top: 70px;
+                left: 12px;
+                right: 12px;
+                transform: none !important;
+                min-width: unset;
+                max-width: unset;
+                width: auto;
+                flex-direction: column;
+                border-radius: 12px;
+                padding: 12px;
+                max-height: 75vh;
+                overflow-y: auto;
+                transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .services-dropdown-wrapper:hover .mega-dropdown {
+                transform: none !important;
+            }
+
+            .db-sidebar {
+                flex: none;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                background: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                padding: 6px;
+                gap: 4px;
+                border-radius: 8px;
+                margin-bottom: 4px;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .db-sidebar::-webkit-scrollbar {
+                height: 3px;
+            }
+            .db-sidebar::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .db-sidebar::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 4px;
+            }
+
+            .db-sidebar-item {
+                flex-shrink: 0;
+                font-size: 12px;
+                padding: 6px 14px;
+                white-space: nowrap;
+                background: rgba(255, 255, 255, 0.4);
+                border-radius: 20px;
+            }
+
+            .db-sidebar-item.active {
+                background: #ffffff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            }
+
+            .db-sidebar-item .item-icon {
+                width: 18px;
+                height: 18px;
+                font-size: 7px;
+            }
+
+            .db-selected-card {
+                padding: 12px 14px 14px 14px;
+            }
+
+            .db-selected-card .selected-title {
+                font-size: 13px;
+                padding-bottom: 8px;
+                margin-bottom: 8px;
+            }
+
+            .db-selected-card .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2px 12px;
+            }
+
+            .db-selected-card .service-item {
+                font-size: 12px;
+                padding: 3px 0;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .benefit-card {
+                padding: 20px 16px;
+            }
+
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+            .job-card {
+                padding: 20px 18px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+            .cta-section p {
+                font-size: 15px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-address p {
+                font-size: 14px;
+            }
+            .footer-map,
+            .footer-map iframe {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .nav-desktop {
+                gap: 6px;
+            }
+            .nav-desktop>a,
+            .nav-desktop .services-link {
+                font-size: 11px;
+            }
+            .nav-desktop .nav-cta {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            .logo img {
+                height: 28px;
+            }
+            .logo span {
+                font-size: 14px;
+            }
+
+            .mega-dropdown {
+                top: 60px;
+                left: 8px;
+                right: 8px;
+                padding: 10px;
+            }
+
+            .db-sidebar-item {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
+
+            .db-selected-card {
+                padding: 10px 10px 12px 10px;
+            }
+
+            .db-selected-card .selected-title {
+                font-size: 12px;
+            }
+
+            .db-selected-card .service-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2px 8px;
+            }
+
+            .db-selected-card .service-item {
+                font-size: 11px;
+                padding: 2px 0;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .process-step p {
+                max-width: 100%;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ FLOATING HEADER ═══ -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span>Yagna Software</span>
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="YagnaAboutUs.html">About Us</a>
+
+                <!-- SERVICES DROPDOWN -->
+                <div class="services-dropdown-wrapper" id="servicesDropdownWrapper">
+                    <button class="services-link" type="button">Services ▼</button>
+
+                    <div class="mega-dropdown" id="megaDropdown">
+                        <!-- Sidebar: Database List -->
+                        <div class="db-sidebar" id="dbSidebar">
+                            <!-- Rendered by JS -->
+                        </div>
+
+                        <!-- White Card: Selected Database -->
+                        <div class="db-selected-card" id="dbSelectedCard">
+                            <div class="selected-title" id="selectedTitle">
+                                <span class="title-icon" id="titleIcon" style="background:#3b82f6;">DB</span>
+                                <span id="selectedDbName">Oracle Database</span>
+                            </div>
+                            <div class="service-grid" id="serviceGrid">
+                                <!-- dynamically rendered -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="YagnaSuccessStories.html">Success Stories</a>
+                <a href="index.html#customer-reviews">Customer Reviews</a>
+                <a href="index.html#contact-us">Contact Us</a>
+                <a href="YagnaCareer.html" class="career-link">Career</a>
+                <a href="YagnaGetInTouch.html" class="nav-cta">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-badge">✦ Join Our Team</span>
+            <h1>
+                Build the Future of<br />
+                <span class="highlight">Data Infrastructure</span>
+            </h1>
+            <p>
+                At Yagna Software Solutions, we're looking for passionate engineers, consultants,
+                and problem-solvers who want to shape the next generation of database management.
+            </p>
+            <div class="hero-actions">
+                <a href="#open-positions" class="btn-primary">
+                    View Openings
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="#why-join" class="btn-outline">Why Yagna?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY JOIN US ═══ -->
+    <section class="why-section" id="why-join">
+        <div class="container">
+            <h2 class="section-headline">Why Join Yagna?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3 class="benefit-title">Cutting-Edge Tech</h3>
+                    <p class="benefit-desc">Work with the latest database technologies — Oracle, AWS, Azure, MongoDB, PostgreSQL, and more.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                    </div>
+                    <h3 class="benefit-title">Global Impact</h3>
+                    <p class="benefit-desc">Solve complex data challenges for enterprises across the globe, from startups to Fortune 500 companies.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="benefit-title">Grow with Experts</h3>
+                    <p class="benefit-desc">Learn from industry veterans with decades of experience in database architecture, cloud, and DevOps.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <h3 class="benefit-title">Work-Life Balance</h3>
+                    <p class="benefit-desc">Flexible remote options, competitive compensation, and a culture that values your wellbeing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ OPEN POSITIONS ═══ -->
+    <section class="jobs-section" id="open-positions">
+        <div class="container">
+            <h2 class="section-headline">Open Positions</h2>
+            <div class="jobs-grid">
+
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <span class="job-tag">Engineering</span>
+                    <h3 class="job-title">Senior Database Engineer</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Full-time
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Hyderabad
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Design, implement, and manage high‑performance database systems across cloud and on‑premise environments. Expertise in Oracle, PostgreSQL, or MySQL required.
+                    </p>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <span class="job-tag">Consulting</span>
+                    <h3 class="job-title">Cloud Database Consultant</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Full-time
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Mumbai
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Lead cloud migration projects, design scalable architectures on AWS/Azure/GCP, and advise clients on best practices for high‑availability and disaster recovery.
+                    </p>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <span class="job-tag">Support</span>
+                    <h3 class="job-title">Database Support Specialist</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Full-time
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Khammam
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Provide 24/7 technical support for mission‑critical databases. Troubleshoot performance issues, manage backups, and ensure high availability for our clients.
+                    </p>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="job-card">
+                    <span class="job-tag">Engineering</span>
+                    <h3 class="job-title">DevOps Engineer — Databases</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Full-time
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Bengaluru
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Automate database provisioning, monitoring, and CI/CD pipelines. Build infrastructure as code for cloud‑native database deployments (Terraform, Ansible).
+                    </p>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="job-card">
+                    <span class="job-tag">Consulting</span>
+                    <h3 class="job-title">Oracle eBusiness Suite Consultant</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Full-time
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Chennai
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Implement, upgrade, and support Oracle eBusiness Suite across versions 11i, R12.1, and R12.2. Strong knowledge of Oracle Apps DBA and performance tuning.
+                    </p>
+                </div>
+
+                <!-- Job 6 -->
+                <div class="job-card">
+                    <span class="job-tag">Internship</span>
+                    <h3 class="job-title">Junior Database Administrator</h3>
+                    <div class="job-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Internship
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            Remote / Khammam
+                        </span>
+                    </div>
+                    <p class="job-desc">
+                        Kickstart your career in database administration. Learn from experts, work on real‑world projects, and gain hands‑on experience with modern database technologies.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ APPLICATION PROCESS ═══ -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-headline">How to Apply</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <h4>1. Submit Application</h4>
+                    <p>Send your resume and a brief cover letter to our careers email.</p>
+                </div>
+                <div class="process-step">
+                    <h4>2. Initial Screening</h4>
+                    <p>We'll review your profile and schedule a short introductory call.</p>
+                </div>
+                <div class="process-step">
+                    <h4>3. Technical Interview</h4>
+                    <p>Showcase your skills in a technical discussion with our senior engineers.</p>
+                </div>
+                <div class="process-step">
+                    <h4>4. Offer &amp; Onboarding</h4>
+                    <p>If we're a mutual fit, we'll extend an offer and welcome you aboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA SECTION ═══ -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Make an Impact?</h2>
+            <p>
+                Send your application to <strong style="color:#3b82f6;">careers@yagnasoftware.com</strong>
+                or reach out through the contact details below.
+            </p>
+            <a href="YagnaGetInTouch.html" class="btn-primary">
+                Get in Touch
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-address">
+                    <h3>Our Office</h3>
+                    <p>
+                        4-2-220/4, No 401, Sri Sai Ganesh Towers,<br />
+                        Khammam - 507001, Telangana, India
+                    </p>
+                </div>
+                <div class="footer-map">
+                    <iframe
+                    src="https://www.google.com/maps?q=4-2-220%2F4%2C+No+401%2C+Sri+Sai+Ganesh+Towers%2C+Khammam+-+507001%2C+Telangana%2C+India&output=embed"
+                    width="360"
+                    height="220"
+                    style="border:0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Yagna Software Solutions office location">
+                </iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Yagna Software Solutions. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+    (function() {
+        console.log('🚀 Yagna Software — Careers page ready');
+
+        // ── Data ──
+        const servicesData = {
+            oracledb: {
+                label: 'Oracle Database',
+                icon: 'OR',
+                iconBg: '#F80000',
+                services: [
+                    'Cloud Infrastructure planning (Oracle, AWS, Azure)',
+                    'Cloud migrations with minimal downtime',
+                    'Oracle Database, RAC & ASM Administration',
+                    'Oracle Exadata Implementation, Migration & Maintenance',
+                    'Exadata Smart Scan, HCC, Flash Cache expertise',
+                    'Exadata software/firmware maintenance (upgrades, patching)',
+                    'Exadata performance tuning',
+                    'Exadata Disaster Recovery strategies',
+                    'Oracle GoldenGate implementation & support',
+                    'Security auditing & patching vulnerabilities',
+                    'Proactive Performance Monitoring & Tuning',
+                    'Database upgrades (9i → 10g → 11g → 12c → 19c)',
+                    'Backup & recovery using RMAN & Storage Technologies',
+                    'RAC, ASM, DataGuard administration',
+                    '24/7 on‑call support for multiple databases'
+                ]
+            },
+            oracleebs: {
+                label: 'Oracle eBusiness Suite',
+                icon: 'EB',
+                iconBg: '#F80000',
+                services: [
+                    'Oracle Apps 11i, R12.1, R12.2 implementation & upgrades',
+                    'Applications upgrades (11i → R12.1 → R12.2)',
+                    'Patching & Cloning Oracle Apps (single/multi‑node)',
+                    'Shared appltop, distributed appltop administration',
+                    'Support & maintenance of applications & databases',
+                    'Monitoring Apache, Concurrent Manager, Forms, DB issues',
+                    'Automating routine monitoring & maintenance',
+                    'Weblogic, Demantra, OBIEE implementation & support',
+                    'SOA Applications implementation & support',
+                    'Identity Management, Single Sign‑On implementation',
+                    'Datacenter, hardware, OS platform migrations'
+                ]
+            },
+            mysql: {
+                label: 'MySQL',
+                icon: 'MY',
+                iconBg: '#00758F',
+                services: [
+                    'Cloud Migration (AWS RDS/Aurora, GCP, Azure)',
+                    'High Availability (InnoDB Cluster, Replication)',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Compliance (GDPR, HIPAA)',
+                    'Backup & Disaster Recovery Planning',
+                    'Managed Database Services (24/7)',
+                    'ProxysQL Consulting & Support',
+                    'Migration from Legacy Databases',
+                    'DevOps Automation for MySQL',
+                    'MySQL Enterprise Audit & Firewall'
+                ]
+            },
+            mariadb: {
+                label: 'MariaDB',
+                icon: 'MA',
+                iconBg: '#003545',
+                services: [
+                    'Cloud Migration (AWS RDS, GCP, Azure)',
+                    'MaxScale Implementation & Support',
+                    'Galera Cluster Configuration & Management',
+                    'Performance Tuning & Query Optimization',
+                    'Backup & Disaster Recovery',
+                    'Migration from MySQL to MariaDB',
+                    'ColumnStore / Analytics Consulting',
+                    'Managed Database Services',
+                    'Security & Compliance Auditing',
+                    'High Availability & Load Balancing'
+                ]
+            },
+            mongodb: {
+                label: 'MongoDB',
+                icon: 'MO',
+                iconBg: '#47A248',
+                services: [
+                    'MongoDB Atlas Setup & Management',
+                    'Sharding & Replication Strategy',
+                    'Aggregation Pipeline Optimization',
+                    'Performance Tuning & Indexing',
+                    'Ops Manager / Cloud Manager Implementation',
+                    'Backup & Disaster Recovery',
+                    'Migration from RDBMS to MongoDB',
+                    'Security Auditing & Encryption',
+                    'Managed Database Services (24/7)',
+                    'Data Modeling Consulting'
+                ]
+            },
+            postgresql: {
+                label: 'PostgreSQL',
+                icon: 'PG',
+                iconBg: '#336791',
+                services: [
+                    'Cloud Migration (AWS RDS, GCP, Azure)',
+                    'High Availability (Patroni, Repmgr)',
+                    'Logical & Physical Replication Setup',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Compliance',
+                    'Backup & Disaster Recovery (Barman)',
+                    'Migration from Oracle & MSSQL',
+                    'PostGIS & Extension Management',
+                    'Managed Database Services',
+                    'DevOps Automation for PostgreSQL'
+                ]
+            },
+            tidb: {
+                label: 'TiDB',
+                icon: 'TI',
+                iconBg: '#2A6C9E',
+                services: [
+                    'HTAP (Hybrid Transactional/Analytical Processing) Consulting',
+                    'Horizontal Scaling Strategy',
+                    'Cloud-Native Deployment (AWS, GCP, Azure)',
+                    'Performance Tuning & Query Optimization',
+                    'Migration from MySQL to TiDB',
+                    'Backup & Disaster Recovery',
+                    'Disaster Recovery & High Availability',
+                    'Managed Database Services',
+                    'Security & Compliance',
+                    'Real-time Analytics Enablement'
+                ]
+            },
+            mssql: {
+                label: 'MSSQL',
+                icon: 'MS',
+                iconBg: '#CC2927',
+                services: [
+                    'Cloud Migration (Azure SQL, AWS RDS)',
+                    'Always On Availability Groups',
+                    'Performance Tuning & Query Optimization',
+                    'Database Security & Encryption',
+                    'Backup & Disaster Recovery',
+                    'SQL Server Integration Services (SSIS)',
+                    'Migration from Oracle/MySQL to MSSQL',
+                    'Managed Database Services (24/7)',
+                    'High Availability & Disaster Recovery',
+                    'License Optimization & Cost Management'
+                ]
+            },
+            cassandra: {
+                label: 'Cassandra',
+                icon: 'CA',
+                iconBg: '#1287B1',
+                services: [
+                    'Cluster Design & Capacity Planning',
+                    'Performance Tuning & Query Optimization',
+                    'Replication Strategy Configuration',
+                    'Backup & Disaster Recovery',
+                    'Migration from RDBMS to Cassandra',
+                    'OpsCenter Management & Monitoring',
+                    'Data Modeling for Distributed Systems',
+                    'Security & Compliance',
+                    'Managed Database Services',
+                    'Real-time Analytics & IoT Solutions'
+                ]
+            }
+        };
+
+        // ── DOM refs ──
+        const wrapper = document.getElementById('servicesDropdownWrapper');
+        const dropdown = document.getElementById('megaDropdown');
+        const sidebar = document.getElementById('dbSidebar');
+        const selectedDbName = document.getElementById('selectedDbName');
+        const titleIcon = document.getElementById('titleIcon');
+        const serviceGrid = document.getElementById('serviceGrid');
+
+        let currentDb = 'oracledb';
+        let hideTimer = null;
+        let isOpen = false;
+
+        // ── Render sidebar ──
+        function renderSidebar() {
+            let html = '';
+            const dbKeys = Object.keys(servicesData);
+            dbKeys.forEach(key => {
+                const data = servicesData[key];
+                const activeClass = key === currentDb ? 'active' : '';
+                html += `
+                            <button class="db-sidebar-item ${activeClass}" data-db="${key}">
+                                <span class="item-icon" style="background:${data.iconBg};">${data.icon}</span>
+                                ${data.label}
+                            </button>
+                        `;
+            });
+            sidebar.innerHTML = html;
+
+            // Add click handlers
+            sidebar.querySelectorAll('.db-sidebar-item').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const db = this.dataset.db;
+                    if (db && servicesData[db] && db !== currentDb) {
+                        renderServices(db);
+                    }
+                });
+            });
+        }
+
+        // ── Render services for selected database ──
+        function renderServices(dbKey) {
+            const data = servicesData[dbKey];
+            if (!data) return;
+
+            currentDb = dbKey;
+
+            // Update sidebar
+            sidebar.querySelectorAll('.db-sidebar-item').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.db === dbKey);
+            });
+
+            // Update white card header
+            selectedDbName.textContent = data.label;
+            titleIcon.textContent = data.icon;
+            titleIcon.style.background = data.iconBg;
+
+            // Render service items
+            let html = '';
+            data.services.forEach(svc => {
+                html += `<div class="service-item">${svc}</div>`;
+            });
+            serviceGrid.innerHTML = html;
+        }
+
+        // ── Dropdown show/hide ──
+        function showDropdown() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            dropdown.style.opacity = '1';
+            dropdown.style.visibility = 'visible';
+            dropdown.style.pointerEvents = 'auto';
+            dropdown.style.transform = 'translateX(-50%) translateY(0)';
+            isOpen = true;
+        }
+
+        function hideDropdown() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            hideTimer = setTimeout(() => {
+                dropdown.style.opacity = '0';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.pointerEvents = 'none';
+                dropdown.style.transform = 'translateX(-50%) translateY(8px)';
+                isOpen = false;
+                hideTimer = null;
+            }, 350);
+        }
+
+        // ── Hover events ──
+        wrapper.addEventListener('mouseenter', function() {
+            showDropdown();
+        });
+
+        wrapper.addEventListener('mouseleave', function() {
+            hideDropdown();
+        });
+
+        dropdown.addEventListener('mouseenter', function() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+            if (!isOpen) {
+                showDropdown();
+            }
+        });
+
+        // ── Mobile toggle ──
+        const servicesLink = wrapper.querySelector('.services-link');
+        if (servicesLink) {
+            servicesLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const isCurrentlyOpen = dropdown.style.opacity === '1';
+                    if (isCurrentlyOpen) {
+                        hideDropdown();
+                    } else {
+                        showDropdown();
+                    }
+                }
+            });
+        }
+
+        // ── Reset mobile styles on resize ──
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    if (!isOpen) {
+                        dropdown.style.opacity = '';
+                        dropdown.style.visibility = '';
+                        dropdown.style.pointerEvents = '';
+                        dropdown.style.transform = '';
+                    }
+                }
+            }, 200);
+        });
+
+        // ── Init ──
+        renderSidebar();
+        renderServices('oracledb');
+
+    })();
+</script>
+</body>
+</html>
